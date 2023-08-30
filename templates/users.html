@@ -1,0 +1,35 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block title %} Пользователи {% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    <div class="list_position" style="grid-template-columns: repeat(7, auto); column-gap: 12vh;">
+        <div class="text_h5" style="font-style: italic; font-weight: 600"></div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Логин</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Фамилия</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Имя</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Расширенные права</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Дата последнего входа</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Дата регистрации</div>
+    {% for users in us %}
+        <div class="text_h5">
+            {% if users == request.user %}
+                ✅
+            {% endif %}
+        </div>
+        <div class="text_h5"> {{ users.username }}</div>
+        <div class="text_h5"> {{ users.last_name }}</div>
+        <div class="text_h5"> {{ users.first_name }}</div>
+        <div class="text_h5">
+            {% if users.is_superuser == True%}
+                👑
+            {% endif %}
+        </div>
+        <div class="text_h5"> {{ users.last_login }}</div>
+        <div class="text_h5"> {{ users.date_joined }}</div>
+    {% endfor %}
+    </div>
+{% endblock %}

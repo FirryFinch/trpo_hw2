@@ -1,0 +1,26 @@
+.center_position{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.oops_text{
+    font-size: 7.1vh; /*48 px*/
+    line-height: 8.2vh; /*56 px*/
+    font-family: 'Roboto', serif;
+    font-weight: 600;
+    color: #000000;
+    resize: both;
+    text-align: center;
+}
+
+.error_text{
+    font-size: 3.5vh; /*24 px*/
+    line-height: 4.1vh; /*28 px*/
+    font-family: 'Roboto', serif;
+    font-weight: 400;
+    color: #000000;
+    resize: both;
+    text-align: center;
+}

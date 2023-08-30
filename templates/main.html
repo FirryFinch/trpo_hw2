@@ -1,0 +1,23 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block title %} Главная {% endblock %}
+
+{% block content %}
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <div class="mainframe_position">
+            <div class="subtext_position">
+                <div class="text_h5" style="color: #9F9F9F; font-style: italic;">База данных</div>
+                <div class="text_h5" style="color: #9F9F9F; font-style: italic;">Проверка API</div>
+                <div class="text_h5" style="color: #9F9F9F; font-style: italic;">Работа с файлами</div>
+                <button class="blueBtn" style="height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='admin'">Django Admin</button>
+                <button class="redBtn" style="height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='api'">Список API</button>
+                <button class="orangeBtn" style="height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="window.open('http://{{ settings.MINIO_STORAGE_ENDPOINT }}')">Панель S3 Minio</button>
+                <button class="blueBtn" style="height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='users'">Пользователи</button>
+                <div></div>
+                <button class="orangeBtn" style="height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='entities/files'">Файлы</button>
+                <button class="blueBtn" style="height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='entities/classes'">Сущности</button>
+            </div>
+        </div>
+{% endblock %}

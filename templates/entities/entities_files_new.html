@@ -1,0 +1,33 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block title %} Новый файл {% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/input.css' %}">
+
+    <form style="margin-left: 7vh" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label class="form-label">Файл</label>
+        <div style="margin-bottom: 2.9vh /*20 px*/; width: 45vh; font-size: 2.6vh; /*18 px*/ line-height: 3.1vh; /*21 px*/ font-family: 'Roboto', serif; color: #000000;">{{ form.file }}</div>
+        <div class="text_h5"> Файл необходимо привязать к объекту. Заполните поля ниже.</div>
+        <br>
+        <label class="form-label">Название</label>
+        <div style="margin-bottom: 2.9vh /*20 px*/; width: 45vh">{{ form.name }}</div>
+        <label class="form-label">Подкласс</label>
+        <div style="margin-bottom: 2.9vh /*20 px*/; width: 45vh">{{ form.subcl }}</div>
+        <label class="form-label">Длина</label>
+        <div style="margin-bottom: 2.9vh /*20 px*/; width: 45vh">{{ form.length }}</div>
+        <label class="form-label">Ширина</label>
+        <div style="margin-bottom: 2.9vh /*20 px*/; width: 45vh">{{ form.width }}</div>
+        <label class="form-label">Высота</label>
+        <div style="margin-bottom: 2.9vh /*20 px*/; width: 45vh">{{ form.height }}</div>
+        <label class="form-label">Номер аудитории</label>
+        <div style="margin-bottom: 2.9vh /*20 px*/; width: 45vh">{{ form.num }}</div>
+        <div style="margin-bottom: 2.9vh /*20 px*/; width: 45vh; font-size: 2.6vh; /*18 px*/ line-height: 3.1vh; /*21 px*/ font-family: 'Roboto', serif; color: #000000">{{ form.errors }}</div>
+        <button class="orangeBtn" style="width: 20vh; /*115 px*/ height: 6.5vh; /*44 px*/ font-size: 2.6vh; /*18 px*/ font-weight: 400; margin-right: 5vh; margin-top: 2vh" type="submit">Добавить</button>
+        <button class="orangeBtn" style="width: 20vh; /*115 px*/ height: 6.5vh; /*44 px*/ font-size: 2.6vh; /*18 px*/ font-weight: 400" type="reset" onclick="location.href='{% url 'entities_files' %}'">Назад</button>
+    <div style="height: 3vh"></div>
+    </form>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Вход в систему</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicons/main.png' %}"/>
+</head>
+
+<body>
+<link rel="stylesheet" href="{% static 'css/general.css' %}">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<link rel="stylesheet" href="{% static 'css/input.css' %}">
+<div class="background">
+    <div class="white_frame">
+        <div class="text_h2" style="text-align: center; margin-bottom: 8.8vh /*60 px*/">Необходимо войти <br/>в систему</div>
+        <form method="post">
+            {% csrf_token %}
+            <label class="form-label">Логин</label>
+            <div style="margin-bottom: 2.9vh /*20 px*/">{{ form.username }}</div>
+            <label class="form-label">Пароль</label>
+            <div style="margin-bottom: 2.9vh /*20 px*/">{{ form.password }}</div>
+            {% if form.errors %}
+                <div class="form-error" style="height: 11vh; font-size: 2.6vh; /*18 px*/ font-family: 'Roboto', serif; font-weight: 400; resize: both; color: #9F9F9F; margin-bottom: 5.9vh"> Что-то введено неверно. Попробуйте ещё раз. <br><br> Убедитесь, что Вы входите под аккаунтом администратора.</div>
+            {% else %}
+                <div style="height: 11vh; margin-bottom: 5.9vh"></div>
+            {% endif %}
+            <input type="hidden" name="next" value="{{ next }}">
+            <button type="submit" class="blueBtn" style="height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/ width: 100%">Войти</button>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

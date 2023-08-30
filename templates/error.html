@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ошибка</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicons/main.png' %}"/>
+</head>
+
+    <body>
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    <link rel="stylesheet" href="{% static 'css/error.css' %}">
+    <div class="center_position">
+        <div class="oops_text"  style="margin-bottom: 8.2vh">Упс!</div>
+        <div class="error_text" style="margin-bottom: 8.2vh">Возникла ошибка 😞</div>
+        {% if code == '404' %}
+            <div class="error_text" style="color: #929292; margin-bottom: 8.2vh"><i>404 <br><br> Page Not Found</i></div>
+        {% elif code == '400' %}
+            <div class="error_text" style="color: #929292; margin-bottom: 8.2vh"><i>400 <br><br> Bad Request</i></div>
+        {% elif code == '403' %}
+            <div class="error_text" style="color: #929292; margin-bottom: 8.2vh"><i>403 <br><br> Permission Denied</i></div>
+        {% elif code == '500' %}
+            <div class="error_text" style="color: #929292; margin-bottom: 8.2vh"><i>500 <br><br> Internal Server Error</i></div>
+        {% endif %}
+        <button class="blueBtn" style="height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/; width: 100%" onclick="location.href='/'">На главную</button>
+    </div>
+    </body>
+
+</html>

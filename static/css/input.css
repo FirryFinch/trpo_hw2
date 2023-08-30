@@ -1,0 +1,20 @@
+
+.form-label{
+    font-size: 2.6vh; /*18 px*/
+    line-height: 3.1vh; /*21 px*/
+    font-family: 'Roboto', serif;
+    font-weight: 400;
+    resize: both;
+    color: #9F9F9F;
+}
+
+.form-input, input{
+    height: 6.5vh; /*44 px*/
+    font-size: 2.6vh; /*18 px*/
+    width: 100%;
+}
+
+.form-input:focus, input:focus {
+    outline: 0.3vh solid #000000; /*2 px*/;
+    border: 0.3vh solid #FFFFFF;
+}

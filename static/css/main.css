@@ -1,0 +1,16 @@
+.mainframe_position {
+    margin-left: 7vh;
+    margin-right: 7vh;
+    height: 73vh;
+    /*background-color: #DCDCDC;*/
+}
+
+.subtext_position{
+    display: grid;
+    grid-template-columns: repeat(3, 50vh);
+    column-gap: 20vh;
+    row-gap: 5vh;
+    justify-content: center;
+    text-align: center;
+    /*background-color: #DCDCDC;*/
+}

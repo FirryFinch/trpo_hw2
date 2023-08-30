@@ -1,0 +1,69 @@
+#header, .module caption{
+    background-color: #19A1A7;
+}
+
+:root {
+    --primary: #4DBDC2;
+    --secondary: #19A1A7;
+    --accent: #f7f7f9;
+    --primary-fg: #FFFFFF;
+
+    --default-button-bg: var(--primary);
+
+    --header-color: #FFFFFF;
+
+    --selected-bg: rgba(77, 189, 194, 0.35);
+    --selected-row: rgba(77, 189, 194, 0.35);
+
+    --button-hover-bg: #19A1A7;
+    --default-button-hover-bg: #19A1A7;
+
+    --breadcrumbs-fg: #FFFFFF;
+    --breadcrumbs-link-fg: #DDDDDD;
+
+    --font-family-primary:
+        Roboto,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        system-ui,
+        "Helvetica Neue",
+        Arial,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+
+    --font-family-monospace:
+        Roboto,
+        ui-monospace,
+        Menlo,
+        Monaco,
+        "Cascadia Mono",
+        "Segoe UI Mono",
+        "Roboto Mono",
+        "Oxygen Mono",
+        "Ubuntu Monospace",
+        "Source Code Pro",
+        "Fira Mono",
+        "Droid Sans Mono",
+        "Courier New",
+        monospace,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+
+h1, #branding h1, #user-tools, #logout-form button, #content-related .module h2, .module caption, thead th{
+    font-weight: 600;
+}
+
+h3, th{
+    font-weight: 400;
+}
+
+.theme-toggle{
+    visibility: hidden;
+}

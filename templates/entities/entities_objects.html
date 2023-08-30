@@ -1,0 +1,41 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block title %}Объекты{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    <div style="display:flex; margin-left: 7vh; margin-right: 7vh; text-align: center; justify-content: space-around; margin-bottom: 3vh;">
+        <button class="blueBtn" style="width: 40vh; height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='./classes'">Классы</button>
+        <button class="blueBtn" style="width: 40vh; height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='./subclasses'">Подклассы</button>
+        <button class="blueBtn2" style="width: 40vh; height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='./objects'">Объекты</button>
+    </div>
+    <div style="display: flex; margin-left: 7vh; margin-right: 7vh; margin-bottom: 5vh; justify-content: right">
+        <button class="blueBtn2" style="margin-right: 4vh; width: 18vh; height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='./objects'">Объекты</button>
+        <button class="orangeBtn" style="margin-right: 13vh;width: 18vh; height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='./files'">Файлы</button>
+    </div>
+    <div class="list_position" style="grid-template-columns: repeat(9, auto); column-gap: 8vh;">
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Название</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Подкласс</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Длина</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Ширина</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Высота</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Номер аудитории</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Файл</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600"></div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600"></div>
+        {% for obj in objects %}
+            <div class="text_h5"> {{ obj.name }}</div>
+            <div class="text_h5"> {{ obj.subcl }}</div>
+            <div class="text_h5"> {{ obj.length }}</div>
+            <div class="text_h5"> {{ obj.width }}</div>
+            <div class="text_h5"> {{ obj.height }}</div>
+            <div class="text_h5"> {{ obj.num }}</div>
+            <div class="text_h5"> <a href='{{ obj.file.url }}'>{{ obj.file }}</a> </div>
+            <div class="edit_logo" onclick="location.href='{% url 'edit_object' pk=obj.id%}'"></div>
+            <div class="del_logo" onclick="if (confirm('Вы действительно хотите удалить объект {{ obj.name }}?')) {location.href='{% url 'delete_object' pk=obj.id %}'} else {return false;}"></div>
+        {% endfor %}
+        <div class="add_logo" style="background-position: center" onclick="location.href='objects/new'"></div>
+    </div>
+{% endblock %}

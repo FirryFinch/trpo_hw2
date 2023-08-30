@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicons/main.png' %}"/>
+</head>
+
+<body>
+{% if user.is_active == True %}
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    <div class="genframe_position">
+        <div class="bauman_logo"></div>
+        <div class="text_h3" style="font-weight:600; margin-left: 2vh;">Администрирование веб-приложения</div>
+        <div class="home_logo" style="margin-left: auto; margin-right: 2vh;" onclick="location.href='{% url 'main' %}'"></div>
+        <div class="text_h5">
+            {% if user.last_name != "" %}
+                {{ user.last_name }} {{ user.first_name | slice:"1" }}.
+            {% else %}
+                {{ user.username }}
+            {% endif %}
+        </div>
+        <div class="orangeBtn" style="width: 17vh; /*115 px*/ height: 6.5vh; /*44 px*/ font-size: 2.6vh; /*18 px*/ font-weight: 400; margin-left: 3.5vh; /*24 px*/" onclick="location.href='{% url 'logout' %}'">Выйти</div>
+    </div>
+{% endif %}
+
+{% block content %}
+{% endblock %}
+
+</body>
+
+</html>

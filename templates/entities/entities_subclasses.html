@@ -1,0 +1,28 @@
+{% extends 'general.html' %}
+
+{% load static %}
+
+{% block title %}Подклассы{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+
+    <div style="display:flex; margin-left: 7vh; margin-right: 7vh; text-align: center; justify-content: space-around; margin-bottom: 5vh;">
+        <button class="blueBtn" style="width: 40vh; height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='./classes'">Классы</button>
+        <button class="blueBtn2" style="width: 40vh; height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='./subclasses'">Подклассы</button>
+        <button class="blueBtn" style="width: 40vh; height: 7.4vh; /*50 px*/ font-size: 2.6vh; /*18 px*/" onclick="location.href='./objects'">Объекты</button>
+    </div>
+    <div class="list_position" style="grid-template-columns: repeat(4, auto); column-gap: 30vh;">
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Наименование</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600">Класс</div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600"></div>
+        <div class="text_h5" style="font-style: italic; font-weight: 600"></div>
+        {% for subcl in subclasses %}
+            <div class="text_h5"> {{ subcl.title }}</div>
+            <div class="text_h5"> {{ subcl.cl }}</div>
+            <div class="edit_logo" onclick="location.href='{% url 'edit_subclass' pk=subcl.id%}'"></div>
+            <div class="del_logo" onclick="if (confirm('Вы действительно хотите удалить подкласс {{ subcl.title }}?')) {location.href='{% url 'delete_subclass' pk=subcl.id %}'} else {return false;}"></div>
+        {% endfor %}
+        <div class="add_logo" style="background-position: center" onclick="location.href='subclasses/new'"></div>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+.background{
+  min-width: 100%;
+  min-height: 100%;
+  background-image: url("../images/background.jpg");
+  position: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.white_frame{
+    position: fixed;
+    width: 60vh;
+    top: 6vh;
+    bottom: 6vh;
+    background: #FFFFFF;
+    padding: 6vh 9vh;
+}
