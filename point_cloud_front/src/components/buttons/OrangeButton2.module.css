@@ -1,0 +1,15 @@
+.orangeBtn2{
+    background: #FF8A35;
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    border: 0.3vh solid #FF8A35; /*2 px*/
+    cursor: pointer;
+
+    height: 7.4vh; /*50 px*/
+    font-size: 2.6vh; /*18 px*/
+}
+
+.orangeBtn2:hover{
+    background: #EA7017;
+    border: 0.3vh solid #EA7017; /*2 px*/
+}

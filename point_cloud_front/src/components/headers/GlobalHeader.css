@@ -1,0 +1,55 @@
+.genframe_position{
+    display: flex;
+    margin-right: 3%;
+    margin-left: 3%;
+    margin-top: 3vh;
+    align-items: center;
+    height: 10vh;
+    /*background-color: #DCDCDC;*/
+}
+
+.bauman{
+    background-image: url("/public/images/bauman_color_bg.png");
+    width: 8.8vh; /*60 px*/
+    height: 8.8vh; /*60 px*/
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.step{
+    width: 4vh;
+}
+
+.home{
+    background-image: url("/public/icons/home_grey.png");
+    width: 4.4vh; /*30 px*/
+    height: 4.4vh; /*30 px*/
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.home:hover{
+    cursor: pointer;
+    background-image: url("/public/icons/home_black.png");
+    width: 4.4vh; /*30 px*/
+    height: 4.4vh; /*30 px*/
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.upload{
+    background-image: url("/public/icons/upload_grey.png");
+    width: 4.4vh; /*30 px*/
+    height: 4.4vh; /*30 px*/
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.upload:hover{
+    cursor: pointer;
+    background-image: url("/public/icons/upload_black.png");
+    width: 4.4vh; /*30 px*/
+    height: 4.4vh; /*30 px*/
+    background-repeat: no-repeat;
+    background-size: contain;
+}

@@ -1,0 +1,15 @@
+.blueBtn2{
+    background: #4DBDC2;
+    font-family: 'Roboto', serif;
+    font-style: normal;
+    border: 0.3vh solid #4DBDC2; /*2 px*/
+    cursor: pointer;
+
+    height: 7.4vh; /*50 px*/
+    font-size: 2.6vh; /*18 px*/
+}
+
+.blueBtn2:hover{
+    background: #19A1A7;
+    border: 0.3vh solid #19A1A7; /*2 px*/
+}

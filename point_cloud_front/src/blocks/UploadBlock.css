@@ -1,0 +1,107 @@
+.upload_parent{
+    display: flex;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 3vh;
+    height: 81vh;
+    border: 0.3vh dashed #9F9F9F;
+
+    font-size: 2.6vh; /*18 px*/
+    line-height: 3.1vh; /*21 px*/
+    font-family: 'Roboto', serif;
+    font-weight: 400;
+    color: #9F9F9F;
+    resize: both;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.upload_child{
+    margin: auto;
+}
+
+.upload_image{
+    background-image: url("/public/icons/upload_grey.png");
+    width: 7.4vh; /*50 px*/
+    height: 7.4vh; /*50 px*/
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: auto;
+}
+
+.file_image{
+    background-image: url("/public/icons/file_grey.png");
+    width: 7.4vh; /*50 px*/
+    height: 7.4vh; /*50 px*/
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: auto;
+}
+
+.oops{
+    font-size: 5.3vh; /*36 px*/
+    line-height: 5.3vh; /*42 px*/
+    font-family: 'Roboto', serif;
+    font-weight: 600;
+    color: #000000;
+    resize: both;
+}
+
+.error{
+    font-size: 3.5vh; /*24 px*/
+    line-height: 4.1vh; /*28 px*/
+    font-family: 'Roboto', serif;
+    font-weight: 400;
+    color: #000000;
+    resize: both;
+}
+
+.textBefore{
+    font-size: 2.6vh; /*18 px*/
+    line-height: 3.1vh; /*21 px*/
+    font-family: 'Roboto', serif;
+    font-weight: 400;
+    color: #000000;
+    resize: both;
+}
+
+.formInput{
+    box-sizing: border-box;
+    height: 6.5vh; /*44 px*/
+    font-size: 2.6vh; /*18 px*/
+    background: #FFFFFF;
+    border: 0.3vh solid #9F9F9F;    /*2 px*/
+    resize: both;
+    padding: 0.8vh;
+}
+
+select{
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    font-family: Roboto,serif;
+    resize: both;
+
+    border: 0.3vh solid #9F9F9F; /*2 px*/
+    outline: none;
+    cursor: pointer;
+    padding: 0.8vh;
+    background-position: calc(100% - 1.2vh) center !important;
+    background: url("/public/icons/select_arrow.png") no-repeat;
+    background-size: 2.6vh 2.6vh;
+
+    width: 100%;
+    height: 6.5vh; /*44 px*/
+    font-size: 2.6vh; /*18 px*/
+}
+
+select:focus{
+    outline: 0.3vh solid #000000; /*2 px*/;
+    border: 0.3vh solid #FFFFFF;
+}
+
+select::-ms-expand {
+    display: none;
+}

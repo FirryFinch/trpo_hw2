@@ -1,0 +1,4 @@
+.searchframe_position{
+    display: flex;
+    flex-direction: column;
+}

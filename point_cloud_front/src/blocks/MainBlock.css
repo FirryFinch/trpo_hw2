@@ -1,0 +1,18 @@
+.mainframe_position{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 3vh;
+    height: 81vh;
+}
+
+.left_position{
+    width: 49%;
+}
+
+.right_position{
+    width: 49%;
+    background-color: #F7F7F9;
+}
