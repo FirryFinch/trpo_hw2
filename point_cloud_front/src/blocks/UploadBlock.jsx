@@ -19,7 +19,7 @@ const UploadBlock = ({user_id, csrf, toMain}) => {
 
 
     function getSubclassesList () {
-        fetch("api/subclasses", {
+        fetch("api/get-subclasses/", {
             credentials: "include",
         })
             .then((res) => res.json())
@@ -110,7 +110,7 @@ const UploadBlock = ({user_id, csrf, toMain}) => {
         formData.append('num', event.target.fnum.value)
         formData.append('created_by', user_id)
 
-        fetch("api/objects/", {
+        fetch("api/add-object/", {
             method: "POST",
             headers: {
                 "X-CSRFToken": csrf
@@ -118,7 +118,7 @@ const UploadBlock = ({user_id, csrf, toMain}) => {
             credentials: "include",
             body: formData
         })
-            .then((data) => {
+            .then(() => {
                 setDrag('success')
             })
             .catch((err) => {

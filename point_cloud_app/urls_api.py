@@ -9,7 +9,8 @@ urlpatterns = [
     path('logout/', point_cloud_app.views_api.LogoutView.as_view(), name='api-logout'),
     path('session/', point_cloud_app.views_api.SessionView.as_view(), name='api-session'),
     path('whoami/', point_cloud_app.views_api.WhoAmI.as_view(), name='api-whoami'),
-    path('classes/', point_cloud_app.views_api.ClassesView.as_view(), name='api-classes'),
-    path('subclasses/', point_cloud_app.views_api.SubclassesView.as_view(), name='api-subclasses'),
-    path('objects/', point_cloud_app.views_api.ObjectsView.as_view(), name='api-objects'),
+    path('get-classes/', point_cloud_app.views_api.GetClassesTS.as_view(), name='api-get-classes'),
+    path('get-subclasses/', point_cloud_app.views_api.GetSubclassesTS.as_view(), name='api-get-subclasses'),
+    path('get-objects/', point_cloud_app.views_api.GetObjectsTS.as_view(), name='api-get-objects'),
+    path('add-object/', point_cloud_app.views_api.AddNewObjectTS.as_view(), name='api-add-object'),
 ]

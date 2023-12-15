@@ -91,7 +91,7 @@ class ViewBlock extends React.Component {
     }
 
     getClassesList () {
-        fetch("api/classes", {
+        fetch("api/get-classes/", {
             credentials: "include",
         })
             .then((res) => res.json())
@@ -104,7 +104,7 @@ class ViewBlock extends React.Component {
     }
 
     getSubclassesList () {
-        fetch("api/subclasses", {
+        fetch("api/get-subclasses/", {
             credentials: "include",
         })
             .then((res) => res.json())

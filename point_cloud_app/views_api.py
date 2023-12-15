@@ -2,7 +2,6 @@ import json
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.core.files import File
 from django.middleware.csrf import get_token
 from django.shortcuts import render
@@ -12,21 +11,8 @@ from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from point_cloud_app.coordinates import get_x, get_y, get_z
-from point_cloud_app.models import Class, Subclass, Object
-from point_cloud_app.serializer import ClassSerializer, SubclassSerializer
-
-from minio import Minio
-
-from point_cloud.settings import MINIO_STORAGE_ENDPOINT, MINIO_STORAGE_ACCESS_KEY, MINIO_STORAGE_SECRET_KEY, \
-    MINIO_STORAGE_MEDIA_BUCKET_NAME
-
-client = Minio(
-    MINIO_STORAGE_ENDPOINT,
-    access_key=MINIO_STORAGE_ACCESS_KEY,
-    secret_key=MINIO_STORAGE_SECRET_KEY,
-    secure=False,
-)
+from point_cloud_app.coordinates import get_x, get_z, get_y
+from point_cloud_app.models import *
 
 
 @login_required
@@ -82,8 +68,9 @@ class LoginView(APIView):
         else:
             group = 'user'
 
-        return Response({'detail': 'Successfully logged in', 'user_id': user.id, 'username': username, 'first_name': first_name,
-                         'last_name': last_name, 'group': group})
+        return Response(
+            {'detail': 'Successfully logged in', 'user_id': user.id, 'username': username, 'first_name': first_name,
+             'last_name': last_name, 'group': group})
 
 
 class LogoutView(APIView):
@@ -113,29 +100,23 @@ class WhoAmI(APIView):
                          'group': group})
 
 
-class ClassesView(APIView):
+class TranscationScript:
+    def run(self):
+        return 1
+
+
+class GetClassesTS(TranscationScript, APIView):
     def get(self, request):
         output = [
             {
                 "id": output.id,
-                "title": output.title
-            } for output in Class.objects.all()
+                "title": output.title,
+            } for output in ClassGateway.get_class_list(self)
         ]
         return Response(output)
 
-    def post(self, request):
-        serializer = ClassSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
 
-
-class CustomEncoder(json.JSONEncoder):
-    def default(self, o):
-        return o.__dict__
-
-
-class SubclassesView(APIView):
+class GetSubclassesTS(TranscationScript, APIView):
     def get(self, request):
         output = [
             {
@@ -143,18 +124,12 @@ class SubclassesView(APIView):
                 "title": output.title,
                 "cl_id": output.cl.id,
                 "cl": output.cl.title
-            } for output in Subclass.objects.all()
+            } for output in SubclassGateway.get_subclass_list(self)
         ]
         return Response(output)
 
-    def post(self, request):
-        serializer = SubclassSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return Response(serializer.data)
 
-
-class ObjectsView(APIView):
+class GetObjectsTS(TranscationScript, APIView):
     def get(self, request):
         output = [
             {
@@ -177,46 +152,20 @@ class ObjectsView(APIView):
                 "file_data_x": get_x(output.file),
                 "file_data_y": get_y(output.file),
                 "file_data_z": get_z(output.file),
-            } for output in Object.objects.all()
+            } for output in ObjectGateway.get_object_list(self)
         ]
         return Response(output)
 
+
+class AddNewObjectTS(TranscationScript, APIView):
     def post(self, request):
-        loadedfile = File(request.data.get('file'))
-        loadedsubclid = int(request.data.get('subcl'))
-        subcl = Subclass.objects.get(id=loadedsubclid)
-        loadedcreated = request.data.get('created_by')
-        created = User.objects.get(id=loadedcreated)
-        newObject = Object.objects.create(
-            subcl=subcl,
-            name=request.data.get('name'),
-            length=request.data.get('length'),
-            width=request.data.get('width'),
-            height=request.data.get('height'),
-            file=loadedfile,
-            num=request.data.get('num'),
-            created_by=created,
-        )
-        newObject.save()
-        return Response({'status', 'success'})
-
-    def delete(self, request):
-        data = json.loads(request.body)
-        del_id = data.get('id')
-        ob = Object.objects.get(id=del_id)
-        client.remove_object(MINIO_STORAGE_MEDIA_BUCKET_NAME, ob.file.name)
-        ob.delete()
-        return Response({'status', 'success'})
-
-    def put(self, request):
-        data = json.loads(request.body)
-        ob = Object.objects.get(id=data.get('id'))
-        ob.name = data.get('name')
-        ob.subcl = Subclass.objects.get(title=data.get('subcl'))
-        ob.length = data.get('length')
-        ob.width = data.get('width')
-        ob.height = data.get('height')
-        ob.num = data.get('num')
-        ob.save()
-        return Response({'status', 'success'})
-
+        file = File(request.data.get('file'))
+        subcl = request.data.get('subcl')
+        cr = request.data.get('created_by')
+        length = request.data.get('length')
+        width = request.data.get('width')
+        height = request.data.get('height')
+        name = request.data.get('name')
+        num = request.data.get('num')
+        ObjectGateway.add_object(self, file, subcl, cr, length, width, height, name, num)
+        return Response({"status": "success"})

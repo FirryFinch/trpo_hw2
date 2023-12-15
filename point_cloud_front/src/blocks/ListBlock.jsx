@@ -9,7 +9,7 @@ class ListBlock extends React.Component {
     }
 
     componentDidMount() {
-        fetch("/api/objects", {
+        fetch("/api/get-objects/", {
             credentials: "include",
         })
             .then((res) => res.json())
@@ -20,7 +20,6 @@ class ListBlock extends React.Component {
                 console.log(err);
             });
     }
-
 
     getUniqueSubclasses() {
         let subclasses = []
@@ -37,18 +36,20 @@ class ListBlock extends React.Component {
             ))
         }
 
-        function eliminateDuplicates(arr) {
+        function eliminateDuplicates (arr) {
+
             let i,
-                len = arr.length,
                 out = [],
                 obj = {};
 
-            for (i = 0; i < len; i++) {
+            for (i = 0; i < arr.length; i++) {
                 obj[arr[i]] = 0;
             }
+
             for (i in obj) {
                 out.push(i);
             }
+
             return out;
         }
 
@@ -83,12 +84,6 @@ class ListBlock extends React.Component {
         if (object.toLowerCase().includes(this.props.inp.toLowerCase())){
             return <Highlighter searchWords={[this.props.inp]} textToHighlight={object} highlightStyle={{backgroundColor: '#4DBDC2'}}/>
         }
-    }
-
-    highlight(wholeName){
-        const regExp = new RegExp(wholeName, 'gi');
-        const matchValue = wholeName.match(regExp)
-        console.log(matchValue)
     }
 
     handleObjectClick(event, object){
@@ -126,3 +121,4 @@ class ListBlock extends React.Component {
 }
 
 export default ListBlock;
+

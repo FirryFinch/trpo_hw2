@@ -7,7 +7,7 @@ class NavigationBlock extends React.Component  {
     }
 
     componentDidMount() {
-        fetch("/api/classes", {
+        fetch("/api/get-classes/", {
             credentials: "include",
         })
             .then((res) => res.json())
